@@ -1,6 +1,7 @@
 package com.jb.polling_station.repository;
 
-import com.jb.ItemService.entity.User;
+
+import com.jb.polling_station.entity.User;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
