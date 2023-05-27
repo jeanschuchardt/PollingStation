@@ -25,14 +25,6 @@ public class User extends BaseEntity implements UserDetails {
     @JsonIgnore
     private String password;
     
-    @OneToMany(mappedBy = "user")
-    @JsonIgnore
-    private Set<TaskList> taskList = new HashSet<>();
-    
-    @OneToMany(mappedBy = "assignedUser")
-    @JsonIgnore
-    private Set<TaskItem> itemsAssigned = new HashSet<>();
-    
     @Enumerated(EnumType.STRING)
     @JsonIgnore
     private Role role;
