@@ -20,11 +20,9 @@ public class Poll extends BaseEntity {
     private Boolean inFavor;
     
     @ManyToOne
-    @JoinColumn(name = "meetingAgendaId", updatable = false, insertable = false)
-    private MeetingAgenda meetingAgenda;
+    @JoinColumn(name = "sessionPollId", updatable = false, insertable = false)
+    private SessionPoll sessionPoll;
     
     @Column
-    private Long meetingAgendaId;
-    
-    
+    private Long sessionPollId;
 }

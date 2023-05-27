@@ -18,8 +18,9 @@ public class MeetingAgenda extends BaseEntity {
     @Column
     private String description;
     
-   @OneToMany(mappedBy = "meetingAgenda")
-   private Set<Poll> poll = new HashSet<>();
+   
+    @OneToMany(mappedBy = "meetingAgenda")
+    private Set<SessionPoll> sessionPolls = new HashSet<>();
    
    
 
