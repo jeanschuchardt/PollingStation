@@ -7,7 +7,6 @@ import com.jb.polling_station.record.SimpleUserResponseDTO;
 import com.jb.polling_station.record.UserRequestDTO;
 import com.jb.polling_station.record.UserResponseDTO;
 import com.jb.polling_station.repository.UserRepository;
-import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
