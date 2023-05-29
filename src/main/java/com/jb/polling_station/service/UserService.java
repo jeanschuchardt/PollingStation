@@ -22,7 +22,7 @@ import java.util.Objects;
 public class UserService {
     
     private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
+
     private final HttpServletRequest servletRequest;
 
     
@@ -30,7 +30,7 @@ public class UserService {
         User user = new User();
         user.setName(userRequest.name());
         user.setEmail(userRequest.email());
-        user.setPassword(passwordEncoder.encode(userRequest.password()));
+        user.setCpf(userRequest.cpf());
         user.setRole(Role.USER);
         
         User save = saveUser(user);
@@ -49,9 +49,7 @@ public class UserService {
     
         user.setName(userRequest.name());
         user.setEmail(userRequest.email());
-        if (Objects.nonNull(userRequest.password()) && userRequest.password().equals("")) {
-            user.setPassword(passwordEncoder.encode(userRequest.password()));
-        }
+      
         
         return saveUser(user);
     }
