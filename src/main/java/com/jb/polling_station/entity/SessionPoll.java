@@ -2,22 +2,26 @@ package com.jb.polling_station.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Data
+@Accessors(chain = true)
 public class SessionPoll extends BaseEntity {
     @Column
-    private Boolean isActive;
+    private Boolean isActive = true;
     
     @Column
-    private Date startTime;
+    private LocalDateTime startTime;
     
     @Column
-    private Date endTime;
+    private LocalDateTime endTime;
     
     
     @ManyToOne
