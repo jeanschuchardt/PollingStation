@@ -17,10 +17,6 @@ import org.springframework.stereotype.Service;
 public class UserService {
     
     private final UserRepository userRepository;
-
-    private final HttpServletRequest servletRequest;
-
-    
     public UserResponseDTO createUser(UserRequestDTO userRequest) {
         User user = new User();
         user.setName(userRequest.name());
