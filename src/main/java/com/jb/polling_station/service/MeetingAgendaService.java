@@ -13,6 +13,7 @@ import java.util.Objects;
 @Service
 public class MeetingAgendaService {
     
+    
     public final MeetingAgendaRepository meetingAgendaRepository;
     
     public MeetingAgendaService(MeetingAgendaRepository meetingAgendaRepository) {
@@ -20,7 +21,7 @@ public class MeetingAgendaService {
     }
     
     public void delete(int id) {
-        MeetingAgenda agenda = getListById(id);
+        MeetingAgenda agenda = getAgendaById(id);
         agenda.setIsArchived(true);
         try {
             save(agenda);
@@ -41,7 +42,7 @@ public class MeetingAgendaService {
         return meetingAgenda;
     }
     
-    public MeetingAgenda getListById(int id) {
+    public MeetingAgenda getAgendaById(int id) {
         return meetingAgendaRepository.findByIdAndIsArchived(id, false)
                                       .orElseThrow(
                                               () -> new ApiRequestException("NOT FOUND", HttpStatus.NOT_FOUND));
