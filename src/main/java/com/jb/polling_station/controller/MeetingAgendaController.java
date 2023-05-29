@@ -32,12 +32,12 @@ public class MeetingAgendaController {
     }
     
     @GetMapping("/api/v1/meeting-agenda")
-    public List<MeetingAgenda> getAll( ) {
+    public List<MeetingAgenda> getAll() {
         return meetingAgendaService.getAll();
     }
     
     @GetMapping("/api/v1/meeting-agenda/{id}")
-    public MeetingAgenda getById(int id ) {
+    public MeetingAgenda getById(int id) {
         return meetingAgendaService.getAgendaById(id);
     }
     

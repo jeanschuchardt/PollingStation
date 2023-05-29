@@ -1,11 +1,11 @@
 package com.jb.polling_station.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Data;
 import lombok.experimental.Accessors;
-
-import java.util.Set;
 
 @Entity
 @Data

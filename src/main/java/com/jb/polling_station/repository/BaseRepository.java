@@ -1,6 +1,5 @@
 package com.jb.polling_station.repository;
 
-import com.jb.polling_station.entity.MeetingAgenda;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.NoRepositoryBean;

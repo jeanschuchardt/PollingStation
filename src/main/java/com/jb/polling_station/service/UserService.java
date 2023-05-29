@@ -1,7 +1,6 @@
 package com.jb.polling_station.service;
 
 
-import com.jb.polling_station.entity.Role;
 import com.jb.polling_station.entity.User;
 import com.jb.polling_station.exception.ApiRequestException;
 import com.jb.polling_station.record.SimpleUserResponseDTO;
@@ -11,11 +10,7 @@ import com.jb.polling_station.repository.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -31,11 +26,8 @@ public class UserService {
         user.setName(userRequest.name());
         user.setEmail(userRequest.email());
         user.setCpf(userRequest.cpf());
-        user.setRole(Role.USER);
         
         User save = saveUser(user);
-        
-        
         
         return new UserResponseDTO(user.getId(), user.getName(), user.getEmail());
         
@@ -44,9 +36,7 @@ public class UserService {
     public User updateUser(int userid, UserRequestDTO userRequest) {
         
         User user = getUser(userid);
-    
-        isUserAllowed(user);
-    
+        
         user.setName(userRequest.name());
         user.setEmail(userRequest.email());
       
@@ -54,17 +44,7 @@ public class UserService {
         return saveUser(user);
     }
     
-    private void isUserAllowed(User user) {
-        if(!userIsAuthority(user)){
-            throw new ApiRequestException("You can not execute this action.",HttpStatus.FORBIDDEN);
-        }
-    }
-    
-    private boolean userIsAuthority(User user) {
-        User userPrincipal = getAuthenticatedUser();
-        return user.getId().equals(userPrincipal.getId());
-    }
-    
+
     private User saveUser(User user) {
         try {
             return userRepository.save(user);
@@ -85,9 +65,5 @@ public class UserService {
         return simpleUserResponseDTO;
     }
     
-    public User getAuthenticatedUser() {
-        User userPrincipal =
-                (User) ((UsernamePasswordAuthenticationToken)servletRequest.getUserPrincipal()).getPrincipal();
-        return userPrincipal;
-    }
+
 }
