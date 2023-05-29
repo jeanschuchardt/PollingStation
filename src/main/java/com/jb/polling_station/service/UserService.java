@@ -24,7 +24,7 @@ public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final HttpServletRequest servletRequest;
-    private final JwtService jwtService;
+
     
     public UserResponseDTO createUser(UserRequestDTO userRequest) {
         User user = new User();
@@ -35,10 +35,9 @@ public class UserService {
         
         User save = saveUser(user);
         
-        var jwkToken = jwtService.generateToken(user);
         
         
-        return new UserResponseDTO(user.getId(), user.getName(), user.getEmail(), jwkToken);
+        return new UserResponseDTO(user.getId(), user.getName(), user.getEmail());
         
     }
     
