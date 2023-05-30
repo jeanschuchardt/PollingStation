@@ -20,7 +20,7 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
-    @Operation(summary = "Create a new user",  tags = {"public endpoint"} )
+    @Operation(summary = "Create a new user" )
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "User created",
                     content = @Content ),
